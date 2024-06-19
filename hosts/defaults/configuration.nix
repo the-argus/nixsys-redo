@@ -1,8 +1,3 @@
-# This file contains configuration options which are absolutely 100% shared and
-# the same between all hosts. There isn't a simple way to make defaults happen
-# (mark everything with lib.lowPrio?) so if something becomes specific to
-# a certain host, it would have to be moved out of this file to *all* host
-# configurations
 {
   pkgs,
   lib,
@@ -18,16 +13,18 @@
     ./zsh.nix
   ];
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = lib.mkDefault "nvim";
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus16";
+    font = lib.mkDefault "Lat2-Terminus16";
     keyMap = lib.mkDefault "us";
   };
 
   nix = {
     package = lib.mkDefault pkgs.nixVersions.stable;
+    # these are not marked mkDefault because I can't see any reason they would
+    # change per host, unless a mistake was made
     settings = {
       extra-experimental-features = ["nix-command" "flakes"];
       substituters = [
@@ -39,13 +36,16 @@
 
   # free storage space by removing documentation
   documentation = {
-    info.enable = false;
-    dev.enable = false;
-    nixos.enable = false;
+    info.enable = lib.mkDefault false;
+    dev.enable = lib.mkDefault false;
+    nixos.enable = lib.mkDefault false;
   };
 
+  # most options for the user here are not marked mkDefault, no reason for them
+  # to change per host, more groups is always better in my case :)
+  # shell is not set to zsh because that is determined by the defaultUserShell
+  # option, in zsh.nix
   users.users.${username} = {
-    shell = pkgs.zsh;
     isNormalUser = true;
     initialPassword = "password123";
     extraGroups = [
@@ -62,5 +62,6 @@
     ];
   };
 
+  # not marked mkDefault because it is already determined by host option
   system.stateVersion = stateVersion;
 }

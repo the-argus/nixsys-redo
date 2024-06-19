@@ -1,3 +1,4 @@
+# This file defines common packages installed on all hosts
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     vim

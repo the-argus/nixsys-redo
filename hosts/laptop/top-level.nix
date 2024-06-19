@@ -13,4 +13,6 @@
   stateVersion = "22.11";
   username = "argus";
   hostname = "evil";
+  # this file overrides defaults defined in hosts/defaults
+  nixosModules = [./configuration.nix];
 }
