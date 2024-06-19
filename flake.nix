@@ -49,11 +49,13 @@
         # make information accessible as module arguments
         specialArgs = inputs // {inherit (settings) username hostname stateVersion;};
 
-        modules = [./shared/configuration.nix ./modules/system];
+        # settings.modules are defined in files such as hosts/laptop/top-level.nix
+        # it is how other nixos configuration options are imported
+        modules = [./hosts/defaults/configuration.nix ./modules/system] ++ settings.nixosModules;
       };
   in {
     nixosConfigurations = {
-      laptop = mkNixOSConfig import ./flake/hosts/laptop.nix;
+      laptop = mkNixOSConfig import ./hosts/laptop/top-level.nix;
     };
   };
 }
