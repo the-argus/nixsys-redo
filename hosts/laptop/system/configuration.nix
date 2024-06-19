@@ -5,12 +5,6 @@
   username,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-    ./plymouth.nix
-    # ./printing.nix
-  ];
-
   time.timeZone = "America/Chicago";
 
   environment.systemPackages = with pkgs; [
