@@ -54,7 +54,6 @@
     isNormalUser = true;
     initialPassword = "password123";
     extraGroups = [
-      "davfs2"
       "wheel"
       "video"
       "audio"
