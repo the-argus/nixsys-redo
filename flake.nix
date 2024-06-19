@@ -62,7 +62,7 @@
 
         # top-level.modules are defined in files such as hosts/laptop/top-level.nix
         # it is how other nixos configuration options are imported
-        modules = [./hosts/defaults/configuration.nix ./modules/system] ++ top-level.nixosModules;
+        modules = [./hosts/defaults/configuration.nix ./modules/shared ./modules/system] ++ top-level.nixosModules;
       };
   in {
     nixosConfigurations = {

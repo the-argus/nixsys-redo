@@ -14,5 +14,5 @@
   username = "argus";
   hostname = "evil";
   # this file overrides defaults defined in hosts/defaults
-  nixosModules = [./configuration.nix];
+  nixosModules = [./system ./shared];
 }
