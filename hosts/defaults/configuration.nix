@@ -3,7 +3,7 @@
   lib,
   username,
   stateVersion,
-  settings,
+  default-system-features,
   ...
 }: {
   imports = [
@@ -31,6 +31,9 @@
         "https://cache.nixos.org/"
       ];
       auto-optimise-store = true;
+      # good default system features which include the stuff needed to show that
+      # we can run stuff compiled specifically for our architecture
+      system-features = lib.mkDefault default-system-features;
     };
   };
 

@@ -41,17 +41,28 @@
     # this function imports the nixpkgs-inputs function to create the correct
     # inputs to import nixpkgs, based on a given settings attrset. these
     # attrsets are different per-host and are found in `flake/hosts`.
-    mkNixOSConfig = settings:
+    mkNixOSConfig = top-level:
       nixpkgs.lib.nixosSystem {
-        pkgs = import nixpkgs (import ./flake/nixpkgs-inputs.nix settings);
-        inherit (settings) system stateVersion;
+        pkgs = import nixpkgs (import ./flake/nixpkgs-inputs.nix top-level);
+        inherit (top-level) system stateVersion;
 
         # make information accessible as module arguments
-        specialArgs = inputs // {inherit (settings) username hostname stateVersion;};
+        specialArgs =
+          # all the flakes we're importing should be accessible
+          inputs
+          # some stuff from top-level.nix should be accessible, mostly used
+          # by the hosts/defaults/configuration.nix for stuff like users
+          // {inherit (top-level) username hostname stateVersion;}
+          # default-system-features is used by hosts/defaults/configuration.nix
+          # to mkDefault. all my machines have the same system features so I never
+          # actually have to override this default. the gccarch- option is needed
+          # if top-level.useArch is true, otherwise nix thinks the host cant
+          # run the binaries we are asking it to compile for its arch
+          // {default-system-features = ["nixos-test" "benchmark" "big-parallel" "kvm" "gccarch-${top-level.arch}"];};
 
-        # settings.modules are defined in files such as hosts/laptop/top-level.nix
+        # top-level.modules are defined in files such as hosts/laptop/top-level.nix
         # it is how other nixos configuration options are imported
-        modules = [./hosts/defaults/configuration.nix ./modules/system] ++ settings.nixosModules;
+        modules = [./hosts/defaults/configuration.nix ./modules/system] ++ top-level.nixosModules;
       };
   in {
     nixosConfigurations = {

@@ -2,16 +2,11 @@
   config,
   lib,
   modulesPath,
-  settings,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
-  nix.settings.system-features =
-    ["nixos-test" "benchmark" "big-parallel" "kvm"]
-    ++ settings.features;
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
@@ -20,6 +15,7 @@
     "usb_storage"
     "sd_mod"
   ];
+
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
