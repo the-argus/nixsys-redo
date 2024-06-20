@@ -13,4 +13,5 @@
   picom = pkgs.callPackage ./picom {};
   xgifwallpaper = pkgs.callPackage ./xgifwallpaper {};
   ufetch = pkgs.callPackage ./ufetch {};
+  godot_4_mono-bin = pkgs.callPackage ./godot_4_mono-bin {};
 }
