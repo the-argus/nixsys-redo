@@ -1,10 +1,11 @@
 {...}: {
   imports = [
-    ./git.nix
-    ./lf.nix
+    ./blugon.nix
     ./dunst.nix
     ./firefox.nix
+    ./git.nix
     ./gtk.nix
     ./kitty.nix
+    ./lf.nix
   ];
 }

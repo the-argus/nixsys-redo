@@ -1,0 +1,3 @@
+{...}: {
+  programs.blugon.enable = true;
+}
