@@ -1,3 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  banner,
+  ...
+}: rec {
   plymouth-themes = pkgs.callPackage ./plymouth-themes {};
+  firefox-assets = pkgs.callPackage ./firefox-assets {};
+  firefox-userchrome = pkgs.callPackage ./firefox-userchrome {
+    top-level-firefox-assets = firefox-assets;
+  };
+  color-schemes = pkgs.callPackage ./color-schemes {inherit banner;};
 }
