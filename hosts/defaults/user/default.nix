@@ -4,5 +4,6 @@
     ./lf.nix
     ./dunst.nix
     ./firefox.nix
+    ./gtk.nix
   ];
 }
