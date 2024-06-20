@@ -50,6 +50,8 @@
         specialArgs =
           # all the flakes we're importing should be accessible
           inputs
+          # import nixpkgs again, this time use unstable as the source
+          // {unstable = import nixpkgs-unstable (import ./flake/nixpkgs-inputs.nix top-level);}
           # some stuff from top-level.nix should be accessible, mostly used
           # by the hosts/defaults/configuration.nix for stuff like users
           // {inherit (top-level) username hostname stateVersion;}
