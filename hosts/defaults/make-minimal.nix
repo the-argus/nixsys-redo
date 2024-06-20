@@ -47,8 +47,6 @@
 
   # stuff disabled by disabling the above modules:
   #
-  # hardware.enableRedistributableFirmware = true;
-  #
   # kernel modules:
   # "vmw_vmci" "vmwgfx" "vmw_vsock_vmci_transport"
   # "hv_storvsc"
@@ -84,5 +82,5 @@
   ];
 
   # disable redistributable firmware and then only enable the ones we want, per-host
-  enableRedistributableFirmware = false;
+  hardware.enableRedistributableFirmware = false;
 }

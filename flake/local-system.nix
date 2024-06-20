@@ -3,6 +3,7 @@
 # this attrset usually only contains the system. but it can also include
 # optimization and libc options.
 {
+  lib,
   system,
   arch,
   useArch,
@@ -16,8 +17,8 @@
 // (
   lib.attrsets.optionalAttrs useArch {
     gcc = {
-      arch = settings.optimization.arch;
-      tune = settings.optimization.arch;
+      arch = arch;
+      tune = arch;
     };
   }
 )

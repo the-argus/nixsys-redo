@@ -1,7 +1,11 @@
 # NOTE: these options are not marked as defaults because you don't want to
 # accidentally change one and not the others.
 # TODO: make a module for this
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   services.udev.extraRules = ''    ACTION!="add|change", GOTO="solokeys_end"
     # SoloKeys rule
 

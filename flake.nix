@@ -30,6 +30,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
@@ -38,20 +39,22 @@
     gtk-nix,
     arkenfox-userjs,
   } @ inputs: let
+    importNixpkgs = np: settings: import np (import ./flake/nixpkgs-inputs.nix (settings // {lib = np.lib;}));
     # this function imports the nixpkgs-inputs function to create the correct
     # inputs to import nixpkgs, based on a given settings attrset. these
     # attrsets are different per-host and are found in `flake/hosts`.
     mkNixOSConfig = top-level:
       nixpkgs.lib.nixosSystem {
-        pkgs = import nixpkgs (import ./flake/nixpkgs-inputs.nix top-level);
-        inherit (top-level) system stateVersion;
+        pkgs = importNixpkgs nixpkgs top-level;
+        inherit (top-level) system;
 
         # make information accessible as module arguments
         specialArgs =
           # all the flakes we're importing should be accessible
           inputs
-          # import nixpkgs again, this time use unstable as the source
-          // {unstable = import nixpkgs-unstable (import ./flake/nixpkgs-inputs.nix top-level);}
+          # import nixpkgs again, this time use unstable as the source. this way
+          # modules can use the newer versions of packages
+          // {unstable = importNixpkgs nixpkgs-unstable top-level;}
           # some stuff from top-level.nix should be accessible, mostly used
           # by the hosts/defaults/configuration.nix for stuff like users
           // {inherit (top-level) username hostname stateVersion;}
@@ -68,7 +71,7 @@
       };
   in {
     nixosConfigurations = {
-      laptop = mkNixOSConfig import ./hosts/laptop/top-level.nix;
+      laptop = mkNixOSConfig (import ./hosts/laptop/top-level.nix);
     };
   };
 }

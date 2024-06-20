@@ -27,7 +27,11 @@
     # this will replace the stdenv if compiler is not gcc
     // (import ./replace-stdenv.nix {inherit lib arch useArch compiler llvmPackages;});
 
-  localSystem = import ./local-system.nix {inherit system arch useMusl useArch;};
+  localSystem = import ./local-system.nix {inherit system arch useMusl useArch lib;};
 
-  overlays = [];
+  overlays = [
+    (_: super: rec {
+      myPackages = super.callPackage ../packages {};
+    })
+  ];
 }

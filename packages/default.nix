@@ -19,4 +19,6 @@
   posys-improved-cursor-theme = pkgs.callPackage ./posys-improved-cursor-theme {};
   google-dot-black-cursor-theme = pkgs.callPackage ./google-dot-black-cursor-theme {};
   breezex-black-cursor-theme = pkgs.callPackage ./breezex-black-cursor-theme {};
+  emptty-unwrapped = pkgs.callPackage ./emptty/default.nix {};
+  emptty = pkgs.callPackage ./emptty/wrapper.nix {inherit emptty-unwrapped;};
 }

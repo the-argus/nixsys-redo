@@ -15,7 +15,8 @@
     ./zsh.nix
   ];
 
-  environment.variables.EDITOR = lib.mkDefault "nvim";
+  # nixos already mkDefaults a EDITOR, so we have to specify a slightly higher priority
+  environment.variables.EDITOR = lib.mkOverride 500 "nvim";
 
   i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
   console = {

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   boot.initrd.availableKernelModules = [
@@ -13,7 +14,7 @@
 
   # enableRedistributableFirmware disables these, re-enable the ones we want
   # here
-  hardware.firmware = [
+  hardware.firmware = with pkgs; [
     linux-firmware
     sof-firmware
     # intel2200BGFirmware
