@@ -11,6 +11,11 @@
     (modulesPath + "/profiles/minimal.nix")
   ];
 
+  # this activiates a file called no-x-libs.nix which does a massive overlay and
+  # forces rebuilds of half the packages on my system. I'm sure its a space
+  # saver but its not worth the compile times
+  environment.noXlibs = false;
+
   # disable some kernel modules and firmware -----------------------------------
   boot.initrd.includeDefaultModules = lib.mkDefault false;
 
