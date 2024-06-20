@@ -21,4 +21,5 @@
   breezex-black-cursor-theme = pkgs.callPackage ./breezex-black-cursor-theme {};
   emptty-unwrapped = pkgs.callPackage ./emptty/default.nix {};
   emptty = pkgs.callPackage ./emptty/wrapper.nix {inherit emptty-unwrapped;};
+  rifle = pkgs.callPackage ./rifle {};
 }
