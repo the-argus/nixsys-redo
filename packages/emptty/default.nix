@@ -12,13 +12,13 @@
 }:
 buildGoModule rec {
   pname = "emptty";
-  version = "0.10.0";
+  version = "0.12.1";
 
   src = fetchFromGitHub {
     owner = "tvrzna";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-8JVF3XNNzmcaJCINnv8B6l2IB5c8q/AvGOzwAlIFYq8=";
+    sha256 = "sha256-9qNAQBmcFKPpJ+AqfOy3emA1fvqI/XaT39KwI5fpXHU=";
   };
 
   buildInputs =
@@ -26,7 +26,7 @@ buildGoModule rec {
     ++ (lib.lists.optionals (!noX11) [libX11])
     ++ (lib.lists.optionals (!noU2f) [pam_u2f]);
 
-  vendorHash = "sha256-tviPb05puHvBdDkSsRrBExUVxQy+DzmkjB+W9W2CG4M=";
+  vendorHash = "sha256-PLyemAUcCz9H7+nAxftki3G7rQoEeyPzY3YUEj2RFn4=";
 
   tags = lib.lists.optionals noX11 ["noxlib"];
 
