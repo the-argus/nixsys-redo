@@ -18,5 +18,6 @@
     ./webcord.nix
     # just generates a zathurarc, doesn't install zathura
     ./zathura.nix
+    ./zsh.nix
   ];
 }
