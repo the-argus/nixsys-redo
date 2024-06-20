@@ -9,4 +9,5 @@
     top-level-firefox-assets = firefox-assets;
   };
   color-schemes = pkgs.callPackage ./color-schemes {inherit banner;};
+  neovim-remote = pkgs.callPackage ./neovim-remote {};
 }
