@@ -6,15 +6,6 @@
   default-system-features,
   ...
 }: {
-  imports = [
-    # NOTE: make-minimal disables redistributable firmware. install firmware in host specific hardware config
-    ./make-minimal.nix
-    ./solokey.nix
-    ./issue
-    ./packages.nix
-    ./zsh.nix
-  ];
-
   # nixos already mkDefaults a EDITOR, so we have to specify a slightly higher priority
   environment.variables.EDITOR = lib.mkOverride 500 "nvim";
 
