@@ -1,3 +1,12 @@
+# This file uses the following packages, without adding them to environment.systemPackages:
+# - myPackages.rifle
+# - bubblewrap
+# - poppler_utils
+# - glow
+# - highlight
+# - file
+# - vimv-rs
+# - dash
 {pkgs, ...}: let
   iconsfile = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/gokcehan/lf/b47cf6d5a525c39db268c2f7b77e2b7497843b17/etc/icons.example";
