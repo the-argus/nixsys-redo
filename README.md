@@ -4,6 +4,7 @@ My config. The `configuration.nix` and other nixos modules are all in `hosts/def
 Per-machine overrides (firmware, hard drive and filesystem information, username,
 hostname, etc) are in `hosts/<name>/system/`. The same goes for home-manager, except
 it's in the `user/` subdirectory instead of `system/`.
+
 Each machine (host) has "top level" options. These are settings that need to be
 known before nixpkgs is imported and therefore cannot be contained in a nixpkgs
 module. These options include hostname, primary username, system, architecture,
