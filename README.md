@@ -21,3 +21,7 @@ They are found in `hosts/<name>/top-level.nix`.
 - Fix xdg-open to properly open files of different types in my desired programs
   - Remove `rifle`, the python script that does this for ranger, from `lf.nix` and
     from `packages/`
+- Enable webGL and history for firefox, being secure is too tiring and I just use
+  ungoogled chromium all the time instead
+- Figure out why firefox takes so long to start, I'm pretty sure it's my config.
+  - Maybe just switch to ungoogled chromium though :/
