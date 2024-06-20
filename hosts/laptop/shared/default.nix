@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware.nix
   ];
@@ -7,4 +7,6 @@
     gnome.enable = true;
     sway.enable = true;
   };
+
+  system.theme = pkgs.myPackages.themes.rosepineWithoutGtkNix;
 }
