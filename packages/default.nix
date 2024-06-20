@@ -10,4 +10,5 @@
   };
   color-schemes = pkgs.callPackage ./color-schemes {inherit banner;};
   neovim-remote = pkgs.callPackage ./neovim-remote {};
+  picom = pkgs.callPackage ./picom {};
 }
