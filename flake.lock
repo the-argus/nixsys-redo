@@ -21,11 +21,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1669224926,
-        "narHash": "sha256-UK19yx8jNqbPfBZNUeJr2Sms7BhbDAUyJBF5w2CT6Hc=",
+        "lastModified": 1719003661,
+        "narHash": "sha256-p3Ka+Ip+ijAapLzFctjop+9T693uKY9XAKQoWUYJ1wE=",
         "owner": "the-argus",
         "repo": "banner.nix",
-        "rev": "253556f4068f5cb9728e49ac42d630cdc0ccfd58",
+        "rev": "769cb6d064a9ecdfe6f6912d798c628cef2ec4e7",
         "type": "github"
       },
       "original": {
