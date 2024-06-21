@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./banner.nix
     ./blugon.nix
     ./dunst.nix
     ./firefox.nix

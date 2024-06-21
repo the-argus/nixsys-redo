@@ -52,7 +52,8 @@ in {
 
     iconTheme = gtk.iconTheme;
 
-    theme = pkgs.lib.mkIf isGtkNix gtk.theme;
+    # only set theme if we didn't already tell gtknix to do that
+    theme = pkgs.lib.mkIf (!isGtkNix) gtk.theme;
 
     gtk3 = {
       bookmarks = [

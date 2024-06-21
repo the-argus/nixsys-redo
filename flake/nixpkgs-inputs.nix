@@ -16,6 +16,7 @@
   useArch ? false,
   compiler ? "gcc", # can also be "clang"
   llvmPackages ? "llvmPackages_18",
+  banner,
   ...
 }: {
   config =
@@ -31,7 +32,7 @@
 
   overlays = [
     (_: super: rec {
-      myPackages = super.callPackage ../packages {};
+      myPackages = super.callPackage ../packages {inherit banner;};
     })
   ];
 }

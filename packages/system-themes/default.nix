@@ -33,7 +33,7 @@
 
   rosePineIcons = {
     name = "rose-pine";
-    package = pkg.rose-pine-icon-theme;
+    package = pkgs.rose-pine-icon-theme;
   };
 
   kanagawaTheme = {
@@ -80,13 +80,31 @@
     package = nordarc-nordzy-icon-theme;
     name = "NordArc";
   };
+
+  posysImproved = {
+    name = "Posy_Cursor"; # can also append _Black _Mono _Mono_Black and _Strokeless
+    package = posys-improved-cursor-theme;
+    size = 16;
+  };
+
+  nordzyCursor = {
+    name = "Nordzy-Cursors";
+    package = nordarc-nordzy-icon-theme;
+    size = 16;
+  };
+
+  googleDotBlack = rec {
+    name = "GoogleDotBlack";
+    package = google-dot-black-cursor-theme;
+    size = 16;
+  };
 in rec {
   defaultTheme = rec {
     wallpaper = "rose/delorean.png";
     gtk = {
       theme = "gtkNix";
       iconTheme = rosePineIcons;
-      cursorTheme = cursorThemes.posysImproved;
+      cursorTheme = posysImproved;
     };
     font = rec {
       monospace = {
@@ -138,7 +156,7 @@ in rec {
         package = pkgs.gruvbox-dark-icons-gtk;
         name = "oomox-gruvbox-dark";
       };
-      cursorTheme = cursorThemes.googleDotBlack;
+      cursorTheme = googleDotBlack;
     };
   };
 
@@ -154,7 +172,7 @@ in rec {
         package = pkgs.gruvbox-dark-icons-gtk;
         name = "oomox-gruvbox-dark";
       };
-      cursorTheme = cursorThemes.posysImproved;
+      cursorTheme = posysImproved;
     };
     opacity = "0.9";
   };
@@ -163,8 +181,8 @@ in rec {
     wallpaper = "nord/lake.png";
     gtk = {
       theme = nordicTheme;
-      iconTheme = nordzyIcons;
-      cursorTheme = cursorThemes.nordzyCursor;
+      iconTheme = nordarcNordzyIcons;
+      cursorTheme = nordzyCursor;
     };
     discordTheme = discordThemes.nordic;
     scheme = schemes.nord;
