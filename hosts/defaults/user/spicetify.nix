@@ -1,5 +1,5 @@
 # Use spicetify-nix to give spicetify a custom color scheme based on
-# config.banner.palette. However the actual theme that is used is configured
+# config.system.theme.scheme However the actual theme that is used is configured
 # here, not in config.system.theme.
 {
   pkgs,
@@ -20,16 +20,16 @@ in {
     colorScheme = "custom";
 
     customColorScheme = let
-      center = with config.banner.palette; {
+      center = with config.system.theme.scheme; {
         text = hialt2;
         bg = base00;
       };
-      outer = with config.banner.palette; {
+      outer = with config.system.theme.scheme; {
         text = hialt2;
         bg = base02;
       };
     in
-      with config.banner.palette; (
+      with config.system.theme.scheme; (
         if theme == spicePkgs.themes.Dribbblish
         then {
           text = center.text;

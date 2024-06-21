@@ -40,7 +40,7 @@ in {
         radius = "8px";
         disabled-opacity = 0.6;
       };
-      palette = config.banner.palette;
+      palette = config.system.theme.scheme;
     };
 
   gtk = {

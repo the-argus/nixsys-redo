@@ -8,7 +8,7 @@
 
     kittyColorFormat = _: (value: "#${value}");
 
-    theme = with config.banner.palette; {
+    theme = with config.system.theme.scheme; {
       foreground = base05;
       background = base00;
       selection_foreground = base05;

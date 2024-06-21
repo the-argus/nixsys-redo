@@ -93,9 +93,9 @@
     in ''
       /*  insert the nix configured banner palette as css */
       ${builtins.concatStringsSep "\n"
-        (lib.lists.remove (mkCssColor "author" config.banner.palette.author)
-          (lib.lists.remove (mkCssColor "scheme" config.banner.palette.scheme)
-            (lib.attrsets.mapAttrsToList mkCssColor config.banner.palette)))}
+        (lib.lists.remove (mkCssColor "author" config.system.theme.scheme.author)
+          (lib.lists.remove (mkCssColor "scheme" config.system.theme.scheme.scheme)
+            (lib.attrsets.mapAttrsToList mkCssColor config.system.theme.scheme)))}
 
       * {
       	border: none;

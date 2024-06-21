@@ -1,5 +1,5 @@
 # This file creates the user.js, userchrome, and usercontent of firefox.
-# Colors are based on config.banner.palette.
+# Colors are based on config.system.theme.scheme.
 {
   firefox-addons,
   arkenfox-userjs,
@@ -10,7 +10,7 @@
   ...
 }: {
   programs.firefox = let
-    colors = with config.banner.palette; {
+    colors = with config.system.theme.scheme; {
       firefox = let
         # try to make this match nixsys/packages/firefox/userchrome/original.nix
         ffbg = base00;
@@ -90,7 +90,7 @@
           vimium
         ];
         userChrome = pkgs.myPackages.firefoxPackages.userChrome.mkCascade {
-          colors = config.banner.palette;
+          colors = config.system.theme.scheme;
           inherit font;
         };
 

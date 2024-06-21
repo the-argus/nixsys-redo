@@ -1,5 +1,5 @@
 {config, ...}: {
-  home.file = with config.banner.palette; {
+  home.file = with config.system.theme.scheme; {
     ".config/zathura/zathurarc" = {
       text = ''
         set selection-clipboard clipboard

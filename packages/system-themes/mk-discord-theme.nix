@@ -3,7 +3,7 @@
   font,
   ...
 }:
-with config.banner.palette; let
+with config.system.theme.scheme; let
   # light mode literally not supported lol
   css = builtins.toFile "system.theme.css" ''
     .theme-dark {
