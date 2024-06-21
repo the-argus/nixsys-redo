@@ -69,9 +69,33 @@
         # it is how other nixos configuration options are imported
         modules = [./hosts/defaults/system ./modules/shared ./modules/system] ++ top-level.nixosModules;
       };
+
+    mkHomeManagerConfig = top-level:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = importNixpkgs nixpkgs top-level;
+        modules =
+          [
+            # import modules, and default options for everything
+            ./modules/user
+            ./hosts/defaults/user
+            # just propagate username, stateVersion, and homeDirectory immediately
+            ({...}: {
+              home = {
+                inherit (top-level) username stateVersion;
+                homeDirectory = "/home/${top-level.username}";
+              };
+            })
+          ]
+          ++ top-level.homeManagerModules;
+        extraSpecialArgs = inputs // {inherit (top-level) username hostname stateVersion;};
+      };
   in {
     nixosConfigurations = {
       laptop = mkNixOSConfig (import ./hosts/laptop/top-level.nix);
+    };
+
+    homeConfigurations = {
+      laptop = mkHomeManagerConfig (import ./hosts/laptop/top-level.nix);
     };
   };
 }
