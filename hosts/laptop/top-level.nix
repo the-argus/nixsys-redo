@@ -2,7 +2,9 @@
 # imported)
 {
   system = "x86_64-linux";
-  allowedUnfree = [];
+  allowedUnfree = [
+    "spotify"
+  ];
   permittedInsecurePackages = [];
   allowBroken = false;
   arch = "tigerlake";

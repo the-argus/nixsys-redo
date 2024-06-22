@@ -22,6 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # rycee packages firefox extensions
+    rycee-expressions = {
+      url = "gitlab:rycee/nur-expressions";
+      flake = false;
+    };
+
     # non-nix imports (need fast updates):
     arkenfox-userjs = {
       url = "github:arkenfox/user.js";
@@ -35,6 +41,7 @@
     nixpkgs-unstable,
     home-manager,
     banner,
+    rycee-expressions,
     spicetify-nix,
     gtk-nix,
     arkenfox-userjs,

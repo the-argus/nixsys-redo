@@ -5,7 +5,7 @@
   ...
 }: {
   home.file = let
-    inherit (config.banner) palette;
+    palette = config.system.theme.scheme;
     dunstbg = palette.base00;
     dunstfg = palette.base05;
     dunsthi = palette.highlight;

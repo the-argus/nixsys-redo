@@ -1,7 +1,7 @@
 # This file creates the user.js, userchrome, and usercontent of firefox.
 # Colors are based on config.system.theme.scheme.
 {
-  firefox-addons,
+  rycee-expressions,
   arkenfox-userjs,
   lib,
   pkgs,
@@ -85,11 +85,11 @@
         name = username;
         id = 0;
         extraConfig = finalUserJS;
-        extensions = with firefox-addons; [
+        extensions = with (import "${rycee-expressions}" {inherit pkgs;}).firefox-addons; [
           ublock-origin
           vimium
         ];
-        userChrome = pkgs.myPackages.firefoxPackages.userChrome.mkCascade {
+        userChrome = pkgs.myPackages.firefox-userchrome.mkCascade {
           colors = config.system.theme.scheme;
           inherit font;
         };

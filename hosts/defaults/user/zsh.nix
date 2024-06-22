@@ -142,7 +142,7 @@ in {
     '';
 
     shellAliases = let
-      mkStartXAlias = wmName: (lib.optionalAttrs config.desktops.${wmName}.enable {"${wmName}-start" = "startx $HOME/.xinitrc ${wmName}";});
+      # mkStartXAlias = wmName: (lib.optionalAttrs config.desktops.${wmName}.enable {"${wmName}-start" = "startx $HOME/.xinitrc ${wmName}";});
     in
       {
         # regular aliases
@@ -158,7 +158,7 @@ in {
         nocolor = ''sed "s/\x1B\[[0-9;]\{1,\}[A-Za-z]//g"'';
       }
       # aliases like i3gaps-start to start a particular wm via startx
-      // (lib.optionalAttrs config.desktops.xorg.enable (mkStartXAlias "i3gaps") // (mkStartXAlias "qtile") // (mkStartXAlias "ratpoison") // (mkStartXAlias "awesome"))
+      # // (lib.optionalAttrs config.desktops.xorg.enable (mkStartXAlias "i3gaps") // (mkStartXAlias "qtile") // (mkStartXAlias "ratpoison") // (mkStartXAlias "awesome"))
       # allow typing "gnome" from tty to start wayland gnome session
       // (lib.optionalAttrs config.desktops.gnome.enable {
         gnome = "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY && XDG_SESSION_TYPE=wayland dbus-run-session -- gnome-shell --display-server --wayland";
